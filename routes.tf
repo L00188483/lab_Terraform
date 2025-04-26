@@ -1,23 +1,4 @@
 
-/*
-
-  igw_id
-  nat_gateway_enabled     = false
-  nat_instance_enabled    = false
-
-subnets_per_az_count
- */
-
-# resource "aws_route_table" "public" {
-#   vpc_id = aws_vpc.main.id
-#
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_internet_gateway.internet_gateway1.id
-#   }
-# }
-
-
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 

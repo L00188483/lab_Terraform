@@ -36,10 +36,6 @@ variable "private_subnet_cidr1" {
   default = "10.0.3.0/24"
 }
 
-# variable "availability_zone1" {
-#   type = string
-#   default = "eu-west-1a"
-# }
 
 variable "image_id" {
   type = string
