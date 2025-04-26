@@ -1,23 +1,22 @@
-resource "aws_instance" "jumpbox" {
-  ami           = var.image_id
-  instance_type = "t2.micro"
-  subnet_id = aws_subnet.public_subnet1.id
-  security_groups = [aws_security_group.public_sg.id]
-  key_name = var.ssh_key_pair
 
-  associate_public_ip_address = true
+
+
+resource "aws_network_interface" "private_eni" {
+  subnet_id       = aws_subnet.private_subnet1.id
+  security_groups = [aws_security_group.private_sg.id]
 
   tags = {
-    Name = "jumpbox"
+    Name = "private-eni"
   }
 }
-
 
 resource "aws_instance" "private" {
   ami           = var.image_id
   instance_type = "t2.micro"
-  subnet_id = aws_subnet.private_subnet1.id
-  security_groups = [aws_security_group.private_sg.id]
+  network_interface {
+    network_interface_id = aws_network_interface.private_eni.id
+    device_index         = 0
+  }
   key_name = var.ssh_key_pair
   user_data = <<-EOF
               #!/bin/bash
@@ -32,5 +31,4 @@ resource "aws_instance" "private" {
   tags = {
     Name = "private-instance"
   }
-
 }

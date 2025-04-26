@@ -3,6 +3,8 @@ resource "aws_lb" "public_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
+
+  # note: AWS requires the ALB to be in two subnets in different AZs
   subnets            = [aws_subnet.public_subnet1.id, aws_subnet.public_subnet2.id]
 
   tags = {

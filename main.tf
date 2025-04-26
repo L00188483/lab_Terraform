@@ -24,6 +24,10 @@ resource "aws_vpc" "main" {
 
 resource "aws_eip" "nat_eip" {
   domain = "vpc"
+
+  tags = {
+    Name = "nat_eip"
+  }
 }
 
 
