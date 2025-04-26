@@ -37,3 +37,6 @@ override.tf.json
 terraform.rc
 # Ignore terraform lock
 .terraform.lock.hcl
+
+# pycharm files
+.idea

@@ -35,3 +35,9 @@ output "jumpbox_public_ip" {
 output "private_instance_ip" {
   value       = aws_instance.private.private_ip
 }
+
+
+output "load_balancer_dns" {
+  value       = aws_lb.public_alb.dns_name
+  description = "Public DNS of the Load Balancer"
+}
