@@ -54,7 +54,7 @@ resource "aws_vpc_security_group_ingress_rule" "private_sg_allow_http_from_alb" 
 }
 
 
-# todo: TEMPORARY, remove this
+# not necessary, useful for debugging
 resource "aws_vpc_security_group_ingress_rule" "private_sg_allow_http_from_jumpbox" {
   security_group_id = aws_security_group.private_sg.id
   ip_protocol       = "tcp"
@@ -88,15 +88,6 @@ resource "aws_vpc_security_group_ingress_rule" "public_sg_allow_ssh" {
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 22
   to_port           = 22
-  ip_protocol       = "tcp"
-}
-
-# todo: TEMPORARY, remove this
-resource "aws_vpc_security_group_ingress_rule" "public_sg_allow_http" {
-  security_group_id = aws_security_group.public_sg.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 80
-  to_port           = 80
   ip_protocol       = "tcp"
 }
 
