@@ -37,6 +37,7 @@ resource "aws_security_group" "private_sg" {
     to_port                     = 80
     protocol                    = "tcp"
     security_groups             = [aws_security_group.alb_sg.id]
+    description                 = "Allow HTTP from ALB"
   }
 
   # not necessary, but useful for debugging
