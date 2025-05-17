@@ -30,6 +30,6 @@ resource "aws_instance" "jumpbox" {
   key_name = var.ssh_key_pair
 
   tags = {
-    Name = "jumpbox"
+    Name = "tf-jumpbox"
   }
 }

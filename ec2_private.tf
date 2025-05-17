@@ -29,6 +29,6 @@ resource "aws_instance" "private" {
               EOF
 
   tags = {
-    Name = "private-instance"
+    Name = "tf-private-instance"
   }
 }
